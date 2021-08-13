@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicker</title>
+</head>
+
+<body>
+  <div class="sectionLeft">
+    <center>
+      <div class="scoreContainer unselectable">
+        Your clicks: <span id="score">0</span> <br>
+        <span id="scorePS">0</span> per second
+      </div>
+      <br>
+      <div class="clickerContainer unselectable">
+        <img src="assets/remember.jpg" height="256" width="256" onclick="addScore(1)">
+      </div>
+    </center>
+  </div>
+  <div class="sectionRight">
+    <table class="shopButton unselectable" onclick="buyCursor()">
+      <tr>
+        <td id="image"><img src="assets/cursor.png"height='64' width='64'><span class="tooltiptext">Generates 1 click per second</span></td>
+        <td id="nameAndCost">
+          <p>Clicker</p>
+          <p><span id="cPrice">Cost: 15</span></p>
+        </td>
+        <td id="amount"><span id="cursors">0</span></td>
+      </tr>
+    </table>
+    <table class="shopButton unselectable" onclick="buyGrandma()">
+      <tr>
+        <td id="image"><img src="assets/grandma.png"height='64' width='64'><span class="tooltiptext">Generates 5 clicks per second</span></td>
+        <td id="nameAndCost">
+          <p>Autoclicker</p>
+          <p><span id="gPrice">Cost: 100</span></p>
+        </td>
+        <td id="amount"><span id="grandmas">0</span></td>
+      </tr>
+    </table>
+    <table class="shopButton unselectable" onclick="buyOven()">
+      <tr>
+        <td id="image"><img src="assets/oven.png"height='64' width='64'><span class="tooltiptext">Generates 50 clicks per second</span></td>
+        <td id="nameAndCost">
+          <p>Macro</p>
+          <p><span id="oPrice">Cost: 1000</span></p>
+        </td>
+        <td id="amount"><span id="ovens">0</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
