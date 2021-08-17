@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicker</title>
+</head>
+
+<body>
+  <div class="sectionLeft">
+    <center>
+      <div class="scoreContainer">
+        Your clicks: <span id="score">0</span> <br>
+        <span id="scorePS">0</span> per second
+      </div>
+      <br>
+      <div class="clickerContainer">
+        <img id="lol" src="assets/remember.jpg" height="256" width="256" onclick="addScore(upgrader)">
+      </div>
+    </center>
+  </div>
+  <div class="sectionRight">
+    <table class="shopButton" onclick="buyCursor()">
+      <tr>
+        <td id="image"><img id="lol" src="assets/cursor.png"height='64' width='64'><span class="tooltiptext">Generates 1 click per second</span></td>
+        <td id="nameAndCost">
+          <p>Clicker</p>
+          <p><span id="cPrice">Cost: 15</span></p>
+        </td>
+        <td id="amount"><span id="cursors" class="test">0</span></td>
+      </tr>
+    </table>
+    <table class="shopButton" onclick="buyGrandma()">
+      <tr>
+        <td id="image"><img id="lol" src="assets/grandma.png"height='64' width='64'><span class="tooltiptext">Generates 5 clicks per second</span></td>
+        <td id="nameAndCost">
+          <p>Autoclicker</p>
+          <p><span id="gPrice">Cost: 100</span></p>
+        </td>
+        <td id="amount"><span id="grandmas" class="test">0</span></td>
+      </tr>
+    </table>
+    <table class="shopButton" onclick="buyOven()">
+      <tr>
+        <td id="image"><img id="lol" src="assets/oven.png"height='64' width='64'><span class="tooltiptext">Generates 50 clicks per second</span></td>
+        <td id="nameAndCost">
+          <p>Macro</p>
+          <p><span id="oPrice">Cost: 1000</span></p>
+        </td>
+        <td id="amount"><span id="ovens" class="test">0</span></td>
+      </tr>
+    </table>
+    <br>
+<h1 class="text1">-[Upgrades]-</h1>
+    <br>
+    <table class="shopButton" onclick="upgradeShit()">
+      <tr>
+        <td id="image"><img id="lol" src="assets/upgrade.png"height='64' width='64'><span class="tooltiptext">+1 Manual clicks</span></td>
+        <td id="nameAndCost">
+          <p>Upgrader</p>
+          <p><span id="uPrice">Cost: 250</span></p>
+        </td>
+        <td id="amount"><span id="upgrader" class="test">0</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

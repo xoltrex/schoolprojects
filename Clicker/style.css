@@ -1,0 +1,63 @@
+.sectionLeft {
+  float: left;
+  width: 80%;
+}
+.sectionRight {
+  float: right;
+  width: 20%;
+}
+.scoreContainer {
+  width: 17.5%;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.clickerContainer img {
+  position: relative;
+  transition: all .1s ease-in-out;
+}
+.clickerContainer img:hover {transform: scale(1.03);}
+.clickerContainer img:active {transform: scale(0.99);}
+
+.shopButton {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  transition: all .1s ease-in-out;
+  border-radius: 10px;
+  width: 100%;
+  margin: 10px 0px 10px 0px;
+}
+.shopButton #image {width: 25%;}
+.shopButton :hover {transform: scale(1.03);}
+.shopButton :active {transform: scale(0.99);}
+.shopButton #amount {font-size: 48px; font-weight: bold;}
+.shopButton #nameAndCost p:first-of-type {font-size: 20px;}
+.shopButton #nameAndCost p {margin: 0px; width: 60%;}
+.shopButton .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  top: -5px;
+  right: 105%; 
+  background-color: #1b1b1b;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+.shopButton:hover .tooltiptext {
+  visibility: visible;
+}
+.test {
+  float: right;
+}
+.text1 {
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
