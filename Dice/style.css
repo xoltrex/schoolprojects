@@ -1,0 +1,53 @@
+.sectionLeft {
+  float: left;
+  width: 17%;
+  color: #1b1b1b;
+	font-size:20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  align-content: center;
+	text-align:center;
+}
+.sectionMiddle{
+  float: inline-start;
+  width: 66%;
+  color: #1b1b1b;
+	font-size:20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  align-content: center;
+	text-align:center;
+  position: relative;
+}
+.sectionRight {
+  width: 17%;
+  color: #1b1b1b;
+	font-size:20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  align-content: center;
+	text-align:center;
+  display: inline-block;
+  text-align: left;
+}
+
+.dice {
+	width:32px;
+	background:#1b1b1b;
+	border:#ffffff 2px solid;
+	padding:10px;
+  color: #ffffff;
+	font-size:24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+	margin:5px;
+  align-self: inherit;
+  margin: auto;
+
+}
+.status {
+  color: black;
+}
+.bruh {
+  align-content: center;
+}
