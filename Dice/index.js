@@ -90,9 +90,11 @@ function addScore(amount) {
 function doubleCounter() {
   if (doubles1 == 3) {
     document.getElementById("status").innerHTML = "Player 1 reached 3 doubles! Points forfeited!";
+    score1 = 0;
     doubles1 = 0;
   } else if (doubles2 == 3) {
     document.getElementById("status").innerHTML = "Player 2 reached 3 doubles! Points forfeited!";
+    score2 = 0;
     doubles2 = 0;
   }
 }
