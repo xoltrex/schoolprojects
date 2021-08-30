@@ -51,3 +51,6 @@
 .bruh {
   align-content: center;
 }
+.debug {
+  visibility:visible;
+}
