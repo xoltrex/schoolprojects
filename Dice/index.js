@@ -75,7 +75,8 @@ function addScore(amount) {
     } else if (turn == "One") { 
       doubles1 = 0;
     } else { doubles2 = 0;}
-  }Counter();
+  }
+  Counter();
   document.getElementById("doubles1").innerHTML = doubles1;
   document.getElementById("doubles2").innerHTML = doubles2;
   document.getElementById("tempScore").innerHTML = tempScore;
