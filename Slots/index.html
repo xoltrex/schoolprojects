@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slots</title>
+</head>
+<body>
+  <div class="sectionLeft">
+    Balance: <span id="balance">0</span> <br>
+    Bet: <span id="bet">0</span> <br>
+  </div>
+  <div class="sectionMiddle">
+    <center>
+      <div id="Rolls">
+        <div id="Slot">
+          <div id="lol">
+          </div>
+          <div id="row" class="slots">
+            <img src="assets/mark.svg" id="S1">
+            <img src="assets/mark.svg" id="S2">
+            <img src="assets/mark.svg" id="S3">
+            <img src="assets/mark.svg" id="S4">
+            <img src="assets/mark.svg" id="S5">
+
+          </div>
+        </div>
+      </div>
+        <div class="buttons">
+          <br>
+          <button class="button" onclick="play()">Click to spin!</button><br><br>
+          <button class ="button">Choose a bet below</button><br><br>
+          <button class="button" onclick="addBet(1)">1€</button>
+          <button class="button" onclick="addBet(2)">2€</button>
+          <button class="button" onclick="addBet(3)">3€</button><br><br>
+          <button class="button" id="endButton" onclick="endGame()">End the game?</button>
+        </div>
+    </center>
+  </div>
+  <div class="sectionRight">
+  </div>
+  <div id="rewards">
+    <div id="tier">
+        <div id="combo">
+            <img src="assets/apple.svg">
+            <img src="assets/apple.svg">
+            <img src="assets/apple.svg">
+            <img src="assets/apple.svg">
+        </div>
+        <div id="reward">
+            <h1>2</h1>
+        </div>
+    </div>
+</div>
+ <script src="index.js"></script>
+</body>
+</html>
