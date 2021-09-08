@@ -8,7 +8,7 @@
   background-color: #1b1b1b;
   color: #ffffff;
   font-size: 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   z-index: 1;
   border: none;
   padding: 5px 5px;
@@ -35,27 +35,27 @@
   position: relative;
 }
 #Rolls #Slot {
-  border: 10px solid #1b1b1b;
+  border: 8px solid #1b1b1b;
   width: 13rem;
   display: table-cell;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
 }
 #Rolls #Slot #slots {
   position: absolute;
-  margin-bottom: 100px;
+  margin-bottom: 90px;
 }
 #Rolls #Slot #S1, #Rolls #Slot #S5 {
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
 }
 #Rolls #Slot #S2, #Rolls #Slot #S4 {
-  width: 9.5rem;
-  height: 9.5rem;
+  width: 8.5rem;
+  height: 8.5rem;
 }
 #Rolls #Slot #S3 {
-  width: 13rem;
-  height: 13rem;
+  width: 12rem;
+  height: 12rem;
 }
 
 #rewards {
@@ -63,35 +63,35 @@
   font-weight: bold;
   color: #1b1b1b;
   font-size: 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   z-index: 1;
   border: none;
   padding: 5px 5px;
 }
 #rewards #tier {
-  border: 10px solid #1b1b1b;
+  border: 8px solid #1b1b1b;
 }
 #rewards div {
   display: flex;
 }
 #rewards h1 {
-  margin: 30px;
-  margin-top: 50px;
-  margin-left: 40px;
+  margin: 25px;
+  margin-top: 45px;
+  margin-left: 35px;
 
-  font-size: 40px;
+  font-size: 35px;
   font-family: Helvetica, sans-serif;
 }
 #rewards img {
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
 }
 #rewards #tier {
   vertical-align: middle;
 }
 #rewards #reward img {
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 #endButton {
