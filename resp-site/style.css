@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, Haettenschweiler, 'Arial', sans-serif;
+}
+.line {
+  border-bottom: 2px solid #ffffff;
+  display: block;
+  width: 34%; 
+}
+.navbar {
+  overflow: hidden;
+  background-color: rgb(34, 34, 34);
+  font-family: Arial;
+}
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #ffffff;
+  color: #1b1b1b;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {
+  background-color: #ffffff;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.grid-container {
+  display: grid;
+  width: 80%;
+  grid-template-columns: 20% 80%;
+  grid-gap: 3px;
+  background-color: rgb(228, 228, 228);
+  padding: 3px;
+  justify-content: center;  
+}
+.grid-container > div {
+  background-color:#1b1b1b;
+  text-align: start;
+  word-spacing: -2px;
+  padding: 15px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.grid-container .lol {
+  text-align: center;
+}
+
+ul.a { list-style-position: outside; }
+ul.b { 
+  padding-left: 75px;
+  list-style-type: circle;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 1440px) {
+.grid-container {
+  width: 100%;
+  grid-template-columns: 32% 68% }
+.grid-container > div {
+  padding: 5px;
+  font-size: 18px;    
+}
+       
+}
