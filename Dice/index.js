@@ -29,8 +29,8 @@ function rollDice(){
       addScore(result)
       doubleCounter()
       content = document.createTextNode("Round: " + round + " Turn: "+ turn + " Points: " + result);
-      history.appendChild(content);
-      history.appendChild(lol);
+      history.prepend(content);
+      history.prepend(lol);
   } else if (d1==d2 && diceTotal==2){
     document.getElementById("status").innerHTML = "Double ones! You get 25 points!";
       result=result +25;
@@ -39,8 +39,8 @@ function rollDice(){
       doubles=false;
       addScore(result)
       content = document.createTextNode("Round: " + round + " Turn: "+ turn + " Points: " + result);
-      history.appendChild(content);
-      history.appendChild(lol);
+      history.prepend(content);
+      history.prepend(lol);
   } else if (d1==1 || d2==1){
     document.getElementById("status").innerHTML = "You got a single 1. No points for you.";
       result=result +0;
@@ -50,8 +50,8 @@ function rollDice(){
       addScore(result)
       content = document.createTextNode("Round: " + round + " Turn: "+ turn + " Points: " + result);
       endRound();
-      history.appendChild(content);
-      history.appendChild(lol);
+      history.prepend(content);
+      history.prepend(lol);
   } else {
     document.getElementById("status").innerHTML = "You rolled "+diceTotal+".";
       result=result +diceTotal;
@@ -60,8 +60,8 @@ function rollDice(){
       doubles=false;
       addScore(result)
       content = document.createTextNode("Round: " + round + " Turn: "+ turn + " Points: " + result);
-      history.appendChild(content);
-      history.appendChild(lol);
+      history.prepend(content);
+      history.prepend(lol);
   }
 }
 
