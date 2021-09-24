@@ -7,12 +7,15 @@ var balance = 10;
 var bet = 1;
 var locked = false;
 var playing = false;
+var LockButtons = []
+var Locked = []
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 window.onload = async function() {
   xbalance = document.getElementById("balance")
   xbet = document.getElementById("bet")
   Rolls = document.getElementById("Rolls")
+  rollbtn = document.getElementById("rollbtn")
   var amount = 4 - Rolls.children.length
 
   for (let i = 0; i < amount; i++) {
@@ -20,6 +23,15 @@ window.onload = async function() {
     element.id = "Slot"
     element.innerHTML = Rolls.children[0].innerHTML;
     Rolls.appendChild(element)
+  }
+
+  for (let i = 0; i < Rolls.children.length; i++) {
+    LockButtons.push(Rolls.children[i].children[2])
+    Locked.push(false)
+  }
+  for (let i = 0; i < LockButtons.length; i++) {
+    Lock(LockButtons[i].parentNode)
+    Lock(LockButtons[i].parentNode)
   }
 
   for (let i = 0; i < Rolls.children.length; i++) {
@@ -60,7 +72,7 @@ async function play() {       // balance is reduced after roll is over because i
   var rolls = Rolls.children
   for (var num = 0; num < rolls.length; num++) {
     var row = rolls[num].children[1].children
-    if (!locked==true) {
+    if (!Locked[num]) {
       rollRow(row)
       await sleep(1250)
     }
@@ -74,6 +86,8 @@ async function play() {       // balance is reduced after roll is over because i
   } Result(result)
   balanceCheck()
 }
+
+var rollbtn
 
 function balanceCheck() {
   xbalance.innerHTML = balance;
@@ -117,6 +131,28 @@ function Result(result) {
       addMoney(bet)
       break
     } else {}
+  }
+}
+
+function Lock(slot) {
+  if (!playing) {
+    var x = Array.prototype.indexOf.call(slot.parentNode.children, slot);
+    let src = slot.parentNode.children[x].children[1].children[0].src
+    src = src.split("/").pop().split(".")[0]
+    if (src != "assets/mark.svg") {
+      if (Locked[x] == false) {
+        Locked[x] = true
+        LockButtons[x].style.backgroundColor = "black";
+        slot.style.backgroundColor = "#1b1b1b"
+      } else {
+        Locked[x] = false
+        LockButtons[x].style.backgroundColor = "white";
+        slot.style.backgroundColor = "rgb(255, 255, 255)"
+      }
+        var l = 0;
+        for (let i = 0; i < Locked.length; i++) if (Locked[i] == true) l++;
+        rollbtn.disabled = (l >= LockButtons.length)
+    }
   }
 }
 
