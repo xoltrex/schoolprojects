@@ -166,7 +166,7 @@ setInterval(function() {
     balanceCheck()
   if(locked==true) {
     document.getElementById("endButton").style.display = "block";
-  }}
+  } else document.getElementById("endButton").style.display = "none";}
 }, 1000);
 
 var wincombos = [
