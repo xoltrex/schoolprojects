@@ -24,13 +24,15 @@
             <img src="assets/mark.svg" id="S3">
             <img src="assets/mark.svg" id="S4">
             <img src="assets/mark.svg" id="S5">
-
           </div>
+          <button onclick="Lock(this.parentNode)" id="LockButton">
+            <img src="assets/lock.svg">
+          </button>
         </div>
       </div>
         <div class="buttons">
           <br>
-          <button class="button" onclick="play()">Click to spin!</button><br><br>
+          <button class="button" id="rollbtn" onclick="play()">Click to spin!</button><br><br>
           <button class ="button">Choose a bet below</button><br><br>
           <button class="button" onclick="addBet(1)">1€</button>
           <button class="button" onclick="addBet(2)">2€</button>
