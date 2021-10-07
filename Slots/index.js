@@ -16,19 +16,20 @@ window.onload = async function() {
   xbet = document.getElementById("bet")
   Rolls = document.getElementById("Rolls")
   rollbtn = document.getElementById("rollbtn")
-  var amount = 4 - Rolls.children.length
 
+/*var amount = 4 - Rolls.children.length
   for (let i = 0; i < amount; i++) {
     var element = document.createElement("div")
-    element.id = "Slot"
+    element.id = "Slot"                               had to remove customizability in favor of functionality
     element.innerHTML = Rolls.children[0].innerHTML;
     Rolls.appendChild(element)
-  }
+  }*/
 
   for (let i = 0; i < Rolls.children.length; i++) {
     LockButtons.push(Rolls.children[i].children[2])
     Locked.push(false)
   }
+
   for (let i = 0; i < LockButtons.length; i++) {
     Lock(LockButtons[i].parentNode)
     Lock(LockButtons[i].parentNode)
@@ -129,7 +130,20 @@ function Result(result) {
       alert(`You won ${wincombos[i][1]} coins + your bet of ` + bet +"€")
       addMoney(wincombos[i][1])
       addMoney(bet)
-      break
+//    console.log(Locked)
+//    console.log(playing)
+      Locked[0] = false
+      document.getElementsByClassName("slot1").Slot.style.backgroundColor = "rgb(255, 255, 255)"
+      Locked[1] = false
+      document.getElementsByClassName("slot2").Slot.style.backgroundColor = "rgb(255, 255, 255)"
+      Locked[2] = false                                                                          //this is absolutely hideous but i cant come up with anything better 
+      document.getElementsByClassName("slot3").Slot.style.backgroundColor = "rgb(255, 255, 255)"
+      Locked[3] = false
+      document.getElementsByClassName("slot4").Slot.style.backgroundColor = "rgb(255, 255, 255)"
+      playing=true
+//    console.log(playing)
+//    console.log(Locked)
+      break 
     } else {}
   }
 }
@@ -142,11 +156,9 @@ function Lock(slot) {
     if (src != "assets/mark.svg") {
       if (Locked[x] == false) {
         Locked[x] = true
-        LockButtons[x].style.backgroundColor = "black";
         slot.style.backgroundColor = "#1b1b1b"
       } else {
         Locked[x] = false
-        LockButtons[x].style.backgroundColor = "white";
         slot.style.backgroundColor = "rgb(255, 255, 255)"
       }
         var l = 0;
