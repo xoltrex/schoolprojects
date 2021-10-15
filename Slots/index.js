@@ -7,6 +7,7 @@ var balance = 10;
 var bet = 1;
 var locked = false;
 var playing = false;
+locks=false;
 var LockButtons = []
 var Locked = []
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
@@ -33,7 +34,7 @@ window.onload = async function() {
   for (let i = 0; i < LockButtons.length; i++) {
     Lock(LockButtons[i].parentNode)
     Lock(LockButtons[i].parentNode)
-  }
+  } locks=false
 
   for (let i = 0; i < Rolls.children.length; i++) {
     for (let y = 0; y < Rolls.children[i].children[1].children.length; y++) {
@@ -130,8 +131,8 @@ function Result(result) {
       alert(`You won ${wincombos[i][1]} coins + your bet of ` + bet +"€")
       addMoney(wincombos[i][1])
       addMoney(bet)
-//    console.log(Locked)
-//    console.log(playing)
+      break 
+    } else {}
       Locked[0] = false
       document.getElementsByClassName("slot1").Slot.style.backgroundColor = "rgb(255, 255, 255)"
       Locked[1] = false
@@ -140,11 +141,10 @@ function Result(result) {
       document.getElementsByClassName("slot3").Slot.style.backgroundColor = "rgb(255, 255, 255)"
       Locked[3] = false
       document.getElementsByClassName("slot4").Slot.style.backgroundColor = "rgb(255, 255, 255)"
-      playing=true
-//    console.log(playing)
-//    console.log(Locked)
-      break 
-    } else {}
+      if(locks==true) {
+        playing=true
+        locks=false
+      }
   }
 }
 
@@ -157,9 +157,11 @@ function Lock(slot) {
       if (Locked[x] == false) {
         Locked[x] = true
         slot.style.backgroundColor = "#1b1b1b"
+        locks=true
       } else {
         Locked[x] = false
         slot.style.backgroundColor = "rgb(255, 255, 255)"
+        locks=false
       }
         var l = 0;
         for (let i = 0; i < Locked.length; i++) if (Locked[i] == true) l++;
