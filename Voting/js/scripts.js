@@ -27,3 +27,28 @@ window.addEventListener('DOMContentLoaded', event => {
       });
   });
 });
+
+var modal = document.getElementById('id01');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+var isAdmin = false;
+function logIn() {
+var uname = 'ADMIN';
+var psw = '1234';         //whats opsec
+var username = document.getElementById('uname').value;
+var password = document.getElementById('psw').value;
+  localStorage.setItem('name', username)
+  localStorage.setItem('password', password)
+  if(uname === username || psw === password) {
+  }
+}
+function checkAdmin() {
+  if(!isAdmin) {
+    document.getElementById('note').style.display = "block";
+  } else {
+    alert("youre no admin")
+  }
+}
