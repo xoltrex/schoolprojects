@@ -4097,7 +4097,13 @@ textarea.form-control-lg {
 }
 
 .nav-item #test {
-display: none;
+  display: none;
+}
+.nav-item #ok {
+  display: block;
+}
+.nav-item #ko {
+  display: none;
 }
 
 .nav-pills .nav-link {
@@ -11733,10 +11739,6 @@ body {
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
-}
-
-#test {
-  display: none;
 }
 
 @-webkit-keyframes animatezoom {
