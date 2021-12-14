@@ -63,14 +63,12 @@ const data2 = [
 ]
 
 function showResult(){
-  calcPerc();
   let answers = document.querySelectorAll(".poll .answers .answer");
   for(let i=0;i<answers.length;i++){
     if(i == poll.selectedAnswer){
       data[i].results+=1;
-    } else {
-      data[i].results=data[i].results
-    }
+    }    
+      calcPerc();
     answers[i].querySelector(".percentage-value").innerText = data[i].results;
     answers[i].querySelector(".percentage-bar").style.width = data2[i].perc + "%";
   }
@@ -78,16 +76,19 @@ function showResult(){
 
 let total = 0;
 function calcPerc() {
-  test()
+  test(data)
   for(i=0;i<data.length;i++) {
     var top = data[i].results
     var btm = total
-    var prc = (top/btm)*100
+    var prc = Math.round((top/btm)*100)
+    console.log("value: ", top)
+    console.log(prc, "%")
     data2[i].perc = prc
-  }
+  } total = 0;
+  console.log("---------------------")
 }
-function test() {
-  data.forEach(function(num) {
-    total+=num.results;
-  })
+function test(input) {
+  for(i=0; i<input.length;i++) {
+    total += input[i].results
+  }
 }
