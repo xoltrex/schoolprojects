@@ -1,3 +1,5 @@
+
+
 let poll = {
   question:"What's your favorite programming language?",
   answers:[
@@ -33,7 +35,7 @@ function markAnswer(i){
   showResult();
 }
 
-const data = [
+const xData = [
   {
     results: 0,
   },
@@ -47,7 +49,7 @@ const data = [
     results: 0,
   }
 ]
-const data2 = [
+const yData = [
   {
     perc: 0,
   },
@@ -66,29 +68,47 @@ function showResult(){
   let answers = document.querySelectorAll(".poll .answers .answer");
   for(let i=0;i<answers.length;i++){
     if(i == poll.selectedAnswer){
-      data[i].results+=1;
+      xData[i].results+=1;
     }    
-      calcPerc();
-    answers[i].querySelector(".percentage-value").innerText = data[i].results;
-    answers[i].querySelector(".percentage-bar").style.width = data2[i].perc + "%";
+  } calcPerc();
+  for(let i=0;i<xData.length;i++){
+    answers[i].querySelector(".percentage-value").innerText = xData[i].results;
+    answers[i].querySelector(".percentage-bar").style.width = yData[i].perc + "%";
   }
 } 
 
 let total = 0;
 function calcPerc() {
-  test(data)
-  for(i=0;i<data.length;i++) {
-    var top = data[i].results
+  test(xData)
+  for(i=0;i<xData.length;i++) {
+    var top = xData[i].results
     var btm = total
     var prc = Math.round((top/btm)*100)
-    console.log("value: ", top)
-    console.log(prc, "%")
-    data2[i].perc = prc
+    //console.log("value: ", top)
+    //console.log(prc, "%")
+    yData[i].perc = prc
   } total = 0;
-  console.log("---------------------")
+  //console.log("---------------------")
 }
 function test(input) {
   for(i=0; i<input.length;i++) {
     total += input[i].results
   }
+}
+
+function createPoll() {
+  let lol = document.getElementById("test123");
+  let ok = document.createElement('div');
+  let ok2 = document.createElement('div');
+  let ok3 = document.createElement('img');
+  
+  ok.className = 'row gx-0 justify-content-center';
+  ok2.className = 'col-lg-6';
+  ok2.setAttribute("onclick", "document.getElementById(`voteModal`).style.display='block'")
+  ok3.className = 'img-fluid';
+  ok3.src = "assets/img/demo-image-01.jpg";
+  
+  lol.appendChild(ok)
+  ok.appendChild(ok2);
+  ok2.appendChild(ok3)
 }
