@@ -4106,6 +4106,9 @@ textarea.form-control-lg {
 .nav-item #ko {
   display: none;
 }
+.nav-link #test {
+  display: none;
+}
 
 .nav-pills .nav-link {
   background: none;
