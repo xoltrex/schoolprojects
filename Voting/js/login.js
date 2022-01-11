@@ -20,7 +20,6 @@ const response = [
   }
 ]
 
-var isAdmin = false;
 var un = document.getElementById("uid");
 var pw = document.getElementById("psw");
 un.addEventListener("input", function() {response[0].username = document.getElementById('uid').value})
@@ -35,23 +34,6 @@ async function logIn() {
   } else alert("no")
 }
 
-function isLogged() {
-  const Token = localStorage.getItem('token')
-  if (!Token) return false; else console.log("lol")
-  return true
-}
-
-async function checkAdmin() {
-  if(isLogged()) {
-    isAdmin = true;
-    if(isAdmin==true){
-      document.getElementById('test').style.display = "block";
-      document.getElementById('ko').style.display = "block";
-      document.getElementById('ok').style.display = "none";
-    } return true;
-  } else return false;
-}
-
 function logOut() {
   document.getElementById('test').style.display = "none";
   document.getElementById('ko').style.display = "none";
@@ -60,5 +42,4 @@ function logOut() {
   isAdmin=false
   window.location.reload();
 }
-
 window.onload = checkAdmin();
