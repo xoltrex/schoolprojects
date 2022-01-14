@@ -29,9 +29,18 @@
               </div>
             </div>
             <div id="adminModal" class="adminModal">
-              <div class="adminModal-content">
-                <button onclick="createPoll()">Create poll</button>
-              </div>
+              <form id="pollMaker">
+                <ul class="list">
+                  <div class="container">
+                      <input type="text" placeholder="Input question" id="qn"  name="qn"  required><br>
+                      <input type="text" placeholder="Input answer 1" id="an1" name="an1" required>
+                      <input type="text" placeholder="Input answer 2" id="an2" name="an2" required>
+                      <input type="text" placeholder="Input answer 3" id="an3" name="an3" required>
+                      <input type="text" placeholder="Input answer 4" id="an4" name="an4" required>
+                  </div>
+                </ul>
+                <input type="button" onclick="createPoll()" value="Create poll">
+              </form>
             </div>
           </center>
           </div>
@@ -39,24 +48,15 @@
       </nav>
         <section class="projects-section bg-light" id="projects">
           <center id="test123">
-          <div class="row gx-0 justify-content-center">
-            <div class="col-lg-6" onclick="document.getElementById('voteModal').style.display='block'">
-              <img class="img-fluid" src="assets/img/demo-image-01.jpg">
+            <div class="row gx-0 justify-content-center">
+              <div class="col-lg-6" onclick="document.getElementById('voteModal').style.display='block'">
+                <img class="img-fluid" src="assets/img/demo-image-01.jpg">
+              </div>
             </div>
-          </div>
-          <div class="row gx-0 justify-content-center">
-            <div class="col-lg-6" onclick="document.getElementById('voteModal').style.display='block'">
-              <img class="img-fluid" src="assets/img/demo-image-02.jpg">
-            </div>
-          </div>
-          <div class="row gx-0 justify-content-center">
-            <div class="col-lg-6" onclick="document.getElementById('voteModal').style.display='block'">
-              <img class="img-fluid" src="assets/img/demo-image-01.jpg">
-            </div>
-          </div>
-        </center>
+          </center>
         </section>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script src="js/scripts.js"></script>
         <script src="js/check.js"></script>
