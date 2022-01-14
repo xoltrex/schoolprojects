@@ -1,10 +1,9 @@
+var xQuestion = "";
+var xAnswers = [];
 
-
-let poll = {
-  question:"What's your favorite programming language?",
-  answers:[
-    "C", "Java", "PHP", "JavaScript"
-  ],
+var poll = {
+  question:xQuestion,
+  answers:xAnswers,
   selectedAnswer:-1
 };
 
@@ -13,12 +12,18 @@ let pollDOM = {
   answers:document.querySelector(".poll .answers")
 };
 
+ qn.addEventListener("input", function() {xQuestion = document.getElementById('qn').value})
+an1.addEventListener("input", function() {xAnswers[0] = document.getElementById('an1').value})
+an2.addEventListener("input", function() {xAnswers[1] = document.getElementById('an2').value})
+an3.addEventListener("input", function() {xAnswers[2] = document.getElementById('an3').value})
+an4.addEventListener("input", function() {xAnswers[3] = document.getElementById('an4').value})
+
 pollDOM.question.innerText = poll.question;
 pollDOM.answers.innerHTML = poll.answers.map(function(answer,i){
   return (
     `
       <div class="answer" onclick="markAnswer('${i}')">
-        ${answer}
+        ${answer} 
         <span class="percentage-bar"></span>
         <span class="percentage-value"></span>
       </div>
@@ -77,7 +82,7 @@ function showResult(){
   }
 } 
 
-let total = 0;
+let total = 0; 
 function calcPerc() {
   test(xData)
   for(i=0;i<xData.length;i++) {
@@ -101,6 +106,7 @@ function createPoll() {
   let ok = document.createElement('div');
   let ok2 = document.createElement('div');
   let ok3 = document.createElement('img');
+
   
   ok.className = 'row gx-0 justify-content-center';
   ok2.className = 'col-lg-6';
@@ -111,4 +117,7 @@ function createPoll() {
   lol.appendChild(ok)
   ok.appendChild(ok2);
   ok2.appendChild(ok3)
+  xQuestion="";
+  xAnswers=[];
+//document.getElementById("pollMaker").reset(); 
 }
