@@ -1,9 +1,10 @@
-var xQuestion = "";
-var xAnswers = [];
+let xQuestion = "";
+let xAnswers = [];
+let pToken = [];
 
-var poll = {
-  question:xQuestion,
-  answers:xAnswers,
+let poll = {
+  question:"",
+  answers:[],
   selectedAnswer:-1
 };
 
@@ -18,18 +19,6 @@ an2.addEventListener("input", function() {xAnswers[1] = document.getElementById(
 an3.addEventListener("input", function() {xAnswers[2] = document.getElementById('an3').value})
 an4.addEventListener("input", function() {xAnswers[3] = document.getElementById('an4').value})
 
-pollDOM.question.innerText = poll.question;
-pollDOM.answers.innerHTML = poll.answers.map(function(answer,i){
-  return (
-    `
-      <div class="answer" onclick="markAnswer('${i}')">
-        ${answer} 
-        <span class="percentage-bar"></span>
-        <span class="percentage-value"></span>
-      </div>
-    `
-  );
-}).join("");
 
 function markAnswer(i){
   poll.selectedAnswer = +i;
@@ -40,7 +29,7 @@ function markAnswer(i){
   showResult();
 }
 
-const xData = [
+let xData = [
   {
     results: 0,
   },
@@ -54,7 +43,7 @@ const xData = [
     results: 0,
   }
 ]
-const yData = [
+let yData = [
   {
     perc: 0,
   },
@@ -101,23 +90,113 @@ function test(input) {
   }
 }
 
+let num = 0;
 function createPoll() {
   let lol = document.getElementById("test123");
   let ok = document.createElement('div');
   let ok2 = document.createElement('div');
   let ok3 = document.createElement('img');
-
+  num++;
   
   ok.className = 'row gx-0 justify-content-center';
   ok2.className = 'col-lg-6';
-  ok2.setAttribute("onclick", "document.getElementById(`voteModal`).style.display='block'")
+  ok2.setAttribute("onclick", "document.getElementById(`voteModal`).style.display='block';clickCheck(this.id);")
+  ok2.id ="vote-"+num;
   ok3.className = 'img-fluid';
   ok3.src = "assets/img/demo-image-01.jpg";
   
   lol.appendChild(ok)
   ok.appendChild(ok2);
   ok2.appendChild(ok3)
+  poll.question = xQuestion;
+  poll.answers = xAnswers;
+  saveData(num)
   xQuestion="";
   xAnswers=[];
-//document.getElementById("pollMaker").reset(); 
+  document.getElementById("pollMaker").reset(); 
 }
+
+let selectedPoll = 0;
+let test0 = 0;
+function clickCheck(clicked) {
+  selectedPoll = clicked.replace(/[^\d]/g, '');
+
+  if(selectedPoll==0) {
+    var arr = JSON.parse(localStorage.getItem('pollData-1'))
+  } else {
+    var arr = JSON.parse(localStorage.getItem('pollData-'+selectedPoll))
+  }
+  
+  pollDOM.question.innerText = arr[0].question;
+  pollDOM.answers.innerHTML = arr[0].answers.map(function(answer,i){
+    return (
+      `
+        <div class="answer" onclick="markAnswer('${i}')">
+          ${answer} 
+          <span class="percentage-bar"></span>
+          <span class="percentage-value"></span>
+        </div>
+      `
+    );
+  }).join("");
+
+    /*while ($(voteModal).is(':hidden')) {
+      console.log("test")
+      break;
+    }*/
+}
+
+
+function saveData(input) { 
+  if($(voteModal).is(':hidden')){
+    pToken.push({
+      question: poll.question,
+      answers: poll.answers,
+      id: selectedPoll,
+      results: xData,
+      perc: yData
+    })
+    localStorage.setItem('pollData-'+input, JSON.stringify(pToken))
+    nukeArrays();
+    test0=1;
+  } else return "not hidden";
+}
+
+function nukeArrays() {
+  for(let i=0;i<xData.length;i++){
+    xData[i].results = 0;
+    yData[i].perc = 0;
+  }
+    poll.question="";
+    poll.answers=[];
+    pToken[0].id=0;
+    pToken[0].question="";
+    pToken[0].answer=[];
+}
+
+function loader() {
+  var elementExists = document.getElementById("vote-1");
+  if (!(elementExists)) {
+    if (!(localStorage.getItem("pollData-1") === null)) {
+      let lol = document.getElementById("test123");
+      let ok = document.createElement('div');
+      let ok2 = document.createElement('div');
+      let ok3 = document.createElement('img');
+      let ok4 = JSON.parse(localStorage.getItem('pollData-1'))
+  
+      ok.className = 'row gx-0 justify-content-center';
+      ok2.className = 'col-lg-6';
+      ok2.setAttribute("onclick", "document.getElementById(`voteModal`).style.display='block';clickCheck(this.id);")
+      ok2.id ="vote-"+ok4[0].id;
+      ok3.className = 'img-fluid';
+      ok3.src = "assets/img/demo-image-01.jpg";
+  
+      lol.appendChild(ok)
+      ok.appendChild(ok2);
+      ok2.appendChild(ok3)
+      poll.question = xQuestion;
+      poll.answers = xAnswers;
+    } else {console.log("just make a poll already")}
+  }
+}
+window.onload = loader()
