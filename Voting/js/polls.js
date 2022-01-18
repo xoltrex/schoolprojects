@@ -1,3 +1,4 @@
+let selectedPoll = 0;
 let xQuestion = "";
 let xAnswers = [];
 let pToken = [];
@@ -65,11 +66,16 @@ function showResult(){
       xData[i].results+=1;
     }    
   } calcPerc();
+    getPerc();
+} 
+
+function getPerc() {
+  let answers = document.querySelectorAll(".poll .answers .answer");
   for(let i=0;i<xData.length;i++){
     answers[i].querySelector(".percentage-value").innerText = xData[i].results;
     answers[i].querySelector(".percentage-bar").style.width = yData[i].perc + "%";
   }
-} 
+}
 
 let total = 0; 
 function calcPerc() {
@@ -116,17 +122,18 @@ function createPoll() {
   document.getElementById("pollMaker").reset(); 
 }
 
-let selectedPoll = 0;
-let test0 = 0;
 function clickCheck(clicked) {
-  selectedPoll = clicked.replace(/[^\d]/g, '');
+  clicked=clicked.replace(/[^\d]/g, '');
+  clicked=parseInt(clicked,10);
+  selectedPoll = clicked
 
   if(selectedPoll==0) {
     var arr = JSON.parse(localStorage.getItem('pollData-1'))
   } else {
     var arr = JSON.parse(localStorage.getItem('pollData-'+selectedPoll))
   }
-  
+  xData=arr[0].results;
+  yData=arr[0].perc;
   pollDOM.question.innerText = arr[0].question;
   pollDOM.answers.innerHTML = arr[0].answers.map(function(answer,i){
     return (
@@ -139,27 +146,41 @@ function clickCheck(clicked) {
       `
     );
   }).join("");
-
-    /*while ($(voteModal).is(':hidden')) {
-      console.log("test")
-      break;
-    }*/
+  getPerc();
+  loop();
 }
 
+function loop() {
+  let i=1;
+  setTimeout(function() {
+    console.log('visible');
+      if($(voteModal).is(':hidden')){i++; 
+        saveData(selectedPoll);
+      } if(i<2) {loop()}
+  }, 1000)
+}
 
 function saveData(input) { 
   if($(voteModal).is(':hidden')){
     pToken.push({
       question: poll.question,
       answers: poll.answers,
-      id: selectedPoll,
+      id: input,
       results: xData,
       perc: yData
     })
-    localStorage.setItem('pollData-'+input, JSON.stringify(pToken))
-    nukeArrays();
-    test0=1;
-  } else return "not hidden";
+    if (!(localStorage.getItem('pollData-'+input) === null)){
+      localStorage.removeItem('pollData-'+input);
+      console.log('[- token cleared')
+      localStorage.setItem('pollData-'+input, JSON.stringify(pToken))
+      console.log('[- data saved-2')
+    } else {
+      localStorage.setItem('pollData-'+input, JSON.stringify(pToken))
+      console.log('[- data saved-1')
+    }
+      setTimeout(function() 
+      {nukeArrays();}, (2000));
+  } else return "[- not hidden";
 }
 
 function nukeArrays() {
@@ -167,11 +188,8 @@ function nukeArrays() {
     xData[i].results = 0;
     yData[i].perc = 0;
   }
-    poll.question="";
-    poll.answers=[];
-    pToken[0].id=0;
-    pToken[0].question="";
-    pToken[0].answer=[];
+    pToken=[];
+    console.log('[- arrays nuked')
 }
 
 function loader() {
