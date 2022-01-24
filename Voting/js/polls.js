@@ -1,4 +1,6 @@
+var polls = new Array();
 let selectedPoll = 0;
+let num = 0;
 let xQuestion = "";
 let xAnswers = [];
 let pToken = [];
@@ -96,30 +98,49 @@ function test(input) {
   }
 }
 
-let num = 0;
+
 function createPoll() {
   let lol = document.getElementById("test123");
   let ok = document.createElement('div');
-  let ok2 = document.createElement('div');
-  let ok3 = document.createElement('img');
+  let ok2 = document.createElement('img');
   num++;
-  
-  ok.className = 'row gx-0 justify-content-center';
-  ok2.className = 'col-lg-6';
-  ok2.setAttribute("onclick", "document.getElementById(`voteModal`).style.display='block';clickCheck(this.id);")
-  ok2.id ="vote-"+num;
-  ok3.className = 'img-fluid';
-  ok3.src = "assets/img/demo-image-01.jpg";
+
+  ok.className = 'col-lg-6';
+  ok.setAttribute("onclick", "document.getElementById(`voteModal`).style.display='block';clickCheck(this.id);")
+  ok.id ="vote-"+num;
+  ok2.className = 'img-fluid';
+  ok2.src = "assets/img/demo-image-01.jpg";
   
   lol.appendChild(ok)
-  ok.appendChild(ok2);
-  ok2.appendChild(ok3)
+  ok.appendChild(ok2)
+  polls.push(document.getElementById('vote-'+num).id);
+  updateList();
   poll.question = xQuestion;
   poll.answers = xAnswers;
   saveData(num)
   xQuestion="";
   xAnswers=[];
-  document.getElementById("pollMaker").reset(); 
+  document.getElementById("pollMaker").reset();
+  if(poll.question === "") {
+    console.log("[- createPoll - EMPTY")
+  } else console.log("[- createPoll - CLEAR")
+}
+
+function deletePoll(input) {
+  xNum = input+=1;
+  document.getElementById('vote-'+xNum).remove();
+  localStorage.removeItem('pollData-'+input);
+  var ok = polls.splice(input,1);
+  updateList();
+}
+
+function updateList() {
+  var str='';
+  str = 'Votes: ' + polls.length + '<br>';
+  for (i=0;i<polls.length;i++) { 
+    str += i + ' : '+polls[i] + " <a href=# onClick='deletePoll("+polls.indexOf(polls[i])+")'> Delete</a> " + "<br >";
+  }
+  document.getElementById('xPoll').innerHTML=str;
 }
 
 function clickCheck(clicked) {
@@ -134,6 +155,8 @@ function clickCheck(clicked) {
   }
   xData=arr[0].results;
   yData=arr[0].perc;
+  poll.question=arr[0].question;
+  poll.answers=arr[0].answers;
   pollDOM.question.innerText = arr[0].question;
   pollDOM.answers.innerHTML = arr[0].answers.map(function(answer,i){
     return (
@@ -148,6 +171,9 @@ function clickCheck(clicked) {
   }).join("");
   getPerc();
   loop();
+  if(poll.question === "") {
+    console.log("[- clickCheck - EMPTY")
+  } else console.log("[- clickCheck - CLEAR")
 }
 
 function loop() {
@@ -179,8 +205,11 @@ function saveData(input) {
       console.log('[- data saved-1')
     }
       setTimeout(function() 
-      {nukeArrays();}, (2000));
+      {nukeArrays();}, (1000));
   } else return "[- not hidden";
+  if(poll.question === "") {
+    console.log("[- saveData - EMPTY")
+  } else console.log("[- saveData - CLEAR")
 }
 
 function nukeArrays() {
@@ -190,31 +219,41 @@ function nukeArrays() {
   }
     pToken=[];
     console.log('[- arrays nuked')
+    if(poll.question === "") {
+      console.log("[- nukeArrays - EMPTY")
+    } else console.log("[- nukeArrays - CLEAR")
 }
 
 function loader() {
   var elementExists = document.getElementById("vote-1");
   if (!(elementExists)) {
-    if (!(localStorage.getItem("pollData-1") === null)) {
-      let lol = document.getElementById("test123");
-      let ok = document.createElement('div');
-      let ok2 = document.createElement('div');
-      let ok3 = document.createElement('img');
-      let ok4 = JSON.parse(localStorage.getItem('pollData-1'))
+    for (var i = 0; i < localStorage.length; i++) {
+      const thisKey = localStorage.key(i);
+      if (thisKey.includes("pollData-")) {
+        var pData = JSON.parse(localStorage.getItem('pollData-'+i))
+        num++;
+        let lol = document.getElementById("test123");
+        let ok = document.createElement('div');
+        let ok2 = document.createElement('img');
   
-      ok.className = 'row gx-0 justify-content-center';
-      ok2.className = 'col-lg-6';
-      ok2.setAttribute("onclick", "document.getElementById(`voteModal`).style.display='block';clickCheck(this.id);")
-      ok2.id ="vote-"+ok4[0].id;
-      ok3.className = 'img-fluid';
-      ok3.src = "assets/img/demo-image-01.jpg";
+        ok.className = 'col-lg-6';
+        ok.setAttribute("onclick", "document.getElementById(`voteModal`).style.display='block';clickCheck(this.id);")
+        ok.id ="vote-"+pData[0].id;
+        ok2.className = 'img-fluid';
+        ok2.src = "assets/img/demo-image-01.jpg";
   
-      lol.appendChild(ok)
-      ok.appendChild(ok2);
-      ok2.appendChild(ok3)
-      poll.question = xQuestion;
-      poll.answers = xAnswers;
-    } else {console.log("just make a poll already")}
+        lol.appendChild(ok)
+        ok.appendChild(ok2)
+        poll.question = xQuestion;
+        poll.answers = xAnswers;
+        console.log("poll loaded -"+num)
+        polls.push(document.getElementById('vote-'+num).id);
+        updateList();
+      }
+    } 
   }
+  if(poll.question === "") {
+    console.log("[- Loader - EMPTY")
+  } else console.log("[- loader - CLEAR")
 }
 window.onload = loader()
