@@ -15,6 +15,6 @@ function checkAdmin() {
 
 function isLogged() {
   const Token = localStorage.getItem('token')
-  if (!Token) return false; else console.log("lol")
+  if (!Token) return false;
     return true
 }
