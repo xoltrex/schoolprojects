@@ -205,7 +205,7 @@ function saveData(input) {
       console.log('[- data saved-1')
     }
       setTimeout(function() 
-      {nukeArrays();}, (1000));
+      {nukeArrays();}, (250));
   } else return "[- not hidden";
   if(poll.question === "") {
     console.log("[- saveData - EMPTY")
